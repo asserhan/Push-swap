@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC = mandatory/parsing_utils.c mandatory/parsing.c
+SRC = mandatory/parsing_utils.c  mandatory/ft_split.c mandatory/parsing.c mandatory/main.c
 
 FT_PRINTF_LIB = libftprintf.a
 FT_PRINTF = $(addprefix ft_printf/,$(FT_PRINTF_LIB))

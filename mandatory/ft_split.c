@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 23:39:05 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/11 16:26:40 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:32:15 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	next_word(const char *s, size_t *begin, size_t *end, char c)
 			(*end)++;
 }
 
-static char	**free_strings(char **str)
+char	**free_strings(char **str)
 {
 	int	i;
 
@@ -54,7 +54,31 @@ static char	**free_strings(char **str)
 	free (str);
 	return (NULL);
 }
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*p;
+	size_t	len_s;
 
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	else
+	{
+		if (start == 0)
+			len_s = ft_strlen(s);
+		else
+			len_s = ft_strlen(s + start);
+	}
+	if (len >= len_s)
+		len = len_s;
+	p = (char *)malloc((len + 1) * sizeof (char));
+	if (!p)
+		return (NULL);
+	else
+		ft_strlcpy(p, s + start, len + 1);
+	return (p);
+}
 char	**ft_split(char const *s, char c)
 {
 	char	**strings;
