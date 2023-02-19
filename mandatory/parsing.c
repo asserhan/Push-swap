@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:00:14 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/19 19:58:02 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:21:33 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ char **ft_parsing(int argc,char **argv)
 		}
 		return (list);
 }
-void check_input(char **list)
+void check_input(t_list **stack_a,char **list)
 {
 	if (ft_duplicate(list))
 		ft_error_msg("Error");
@@ -155,7 +155,8 @@ void check_input(char **list)
 		ft_atoi(*list);
 		list++;
 	}
-
+	while (list)
+		ft_lstadd_back(stack_a,ft_lstnew(ft_atoi(*list)));
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/19 15:01:51 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:24:30 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define PUSH_SWAP_H
 # include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
+
+typedef struct s_list
+{
+	int content;
+	int position;
+	struct s_list *next;
+}			t_list;
 
 void	ft_error_msg(char *str);
 size_t	ft_strlen(const char *s);
@@ -26,5 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
 long	ft_atoi(char *str);
 char **ft_parsing(int argc,char **argv);
-void check_input(char **list);
+t_list	*ft_lstnew(int content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void check_input(t_list **stack_a,char **list);
 #endif

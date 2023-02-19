@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 23:46:53 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/19 22:25:07 by hasserao         ###   ########.fr       */
+/*   Created: 2023/02/19 20:03:04 by hasserao          #+#    #+#             */
+/*   Updated: 2023/02/19 22:10:06 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc,char **argv)
+t_list	*ft_lstnew(int content)
 {
-	if (argc >= 2)
-	{
-		t_list *stack_a = NULL;
-		char **s;
-		s = ft_parsing(argc,argv);
-		check_input(&stack_a,s);
+	t_list	*new_node;
 
-		// while (stack_a	!= NULL)
-		// {
-		// 	ft_printf("%d\n",stack_a->content);
-		// 	stack_a = stack_a->next;
-		// }
-		system("leaks push_swap");
-	}
+	new_node = malloc (sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
 	else
-		exit(EXIT_FAILURE);
-
+	{
+		last = *lst;
+		while (last -> next != NULL)
+			last = last -> next;
+		last -> next = new;
+	}
 }
