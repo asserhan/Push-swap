@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/19 22:24:30 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:28:53 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ long	ft_atoi(char *str);
 char **ft_parsing(int argc,char **argv);
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void ft_lstclear(t_list **lst);
 void check_input(t_list **stack_a,char **list);
+
 #endif
