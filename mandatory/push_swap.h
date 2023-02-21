@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/20 22:23:29 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/21 19:09:37 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_lstclear(t_list **lst);
 void	check_input(t_list **stack_a,char **list);
 void	ft_swap(t_list **stack);
 void	ft_rotate(t_list **stack);
+void ft_reverse_rotate(t_list **stack);
 
 
 #endif
