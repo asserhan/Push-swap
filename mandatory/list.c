@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 20:39:35 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/22 18:00:11 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:49:17 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,32 @@ void ft_get_list(int argc,char **argv,t_list **stack_a)
 
 void index_list(t_list **stack,t_list *new)
 {
-	(*stack)->pos = 0;
-	while (*stack)
+	t_list *tmp;
+	tmp = *stack;
+	new->index = 0;
+	while (tmp)
 	{
-		if (new->content < (*stack)->content)
-			(*stack)->pos++;
+		if (new->content > tmp->content)
+			new->index++;
 		else
-			new->pos++;
-		(*stack) = (*stack)->next;
+			tmp->index++;
+		tmp = tmp->next;
+	}
+}
+void ft_print_list(t_list *stack)
+{
+	while (stack)
+	{
+		ft_printf("%d\n",stack->content);
+		stack = stack->next;
 	}
 }
 void ft_print_index(t_list **stack)
 {
 	while (*stack)
 	{
-		ft_printf("%d\n",(*stack)->pos);
+		ft_printf("%d\n",(*stack)->index);
 		(*stack) = (*stack)->next;
 	}
 }
+

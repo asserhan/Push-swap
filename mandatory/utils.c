@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 20:03:04 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/21 19:09:44 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:16:15 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,3 @@ void ft_lstclear(t_list **lst)
 	}
 	*lst = NULL;
 }
-	// curr = *stack;
-	// while (curr->next->next)
-	// 	curr = curr->next;
-	// head = curr->next;
-	// curr->next = NULL;
-	// head->next = *stack;
-	// *stack = head;

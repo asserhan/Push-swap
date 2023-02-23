@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:00:14 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/22 17:23:30 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:56:35 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	ft_error_msg(char *str)
 {
-	ft_printf("%s\n",str);
+	while (*str)
+	{
+		write (2,&*str,1);
+		str++;
+	}
+	write (2,"\n",1);
 	exit(1);
 }
 
