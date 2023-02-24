@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/23 21:24:01 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:03:19 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ void	ft_print_list(t_list *stack);
 void	ft_print_index(t_list **stack);
 void	index_list(t_list **stack, t_list *new);
 void	init_stack(t_list **stack);
+void	ft_swap_a(t_list **stack);
+void	ft_rotate_a(t_list **stack);
+void	ft_reverse_rotate_a(t_list **stack);
+void	ft_push_a(t_list **b,t_list **a);
+void	ft_swap_b(t_list **stack);
+void	ft_rotate_b(t_list **stack);
+void	ft_reverse_rotate_b(t_list **stack);
+void	ft_push_b(t_list **b,t_list **a);
 void	sort_three (t_list **stack);
 
 

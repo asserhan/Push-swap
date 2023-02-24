@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 20:02:10 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/24 15:39:15 by hasserao         ###   ########.fr       */
+/*   Created: 2023/02/24 16:01:30 by hasserao          #+#    #+#             */
+/*   Updated: 2023/02/24 18:55:29 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_swap_a(t_list **stack)
+void ft_swap_b(t_list **stack)
 {
 	int tmp;
 
@@ -21,10 +21,10 @@ void ft_swap_a(t_list **stack)
 	tmp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = tmp;
-	write (1,"sa\n",3);
+	write (1,"sb\n",3);
 }
 
-void ft_rotate_a(t_list **stack)
+void ft_rotate_b(t_list **stack)
 {
 	t_list *curr;
 	t_list *head;
@@ -38,9 +38,9 @@ void ft_rotate_a(t_list **stack)
 		curr = curr->next;
 	curr->next = head;
 	head->next = NULL;
-	write (1,"ra\n",3);
+	write (1,"rb\n",3);
 }
-void ft_reverse_rotate_a(t_list **stack)
+void ft_reverse_rotate_b(t_list **stack)
 {
 	t_list *curr;
 	t_list *last;
@@ -54,12 +54,12 @@ void ft_reverse_rotate_a(t_list **stack)
 	last->next = *stack;
 	*stack = last;
 	curr->next = NULL;
-	write (1,"rra\n",4);
+	write (1,"rrb\n",4);
 
 
 }
 
-void ft_push_a(t_list **b,t_list **a)
+void ft_push_b(t_list **a,t_list **b)
 {
 	t_list *tmp;
 	if (*b)
@@ -69,6 +69,5 @@ void ft_push_a(t_list **b,t_list **a)
 		tmp->next = *a;
 		*a = tmp;
 	}
-	write(1,"pa\n",3);
+	write(1,"pb\n",3);
 }
-
