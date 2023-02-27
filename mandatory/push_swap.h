@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/24 16:03:19 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/27 03:46:22 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct s_list
 	int bott;
 	int top;
 	int md;
+	int min;
+	int max;
+	int min_pos;
+	int max_pos;
+	int md_pos;
 	struct s_list *next;
 }			t_list;
 
@@ -41,6 +46,7 @@ long	ft_atoi(char *str);
 char 	**ft_parsing(int argc,char **argv);
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
 void	ft_lstclear(t_list **lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_get_list(int argc,char **argv,t_list **stack_a);
@@ -57,6 +63,10 @@ void	ft_rotate_b(t_list **stack);
 void	ft_reverse_rotate_b(t_list **stack);
 void	ft_push_b(t_list **b,t_list **a);
 void	sort_three (t_list **stack);
+void	lst_min(t_list **stack);
+void	lst_max(t_list **stack);
+int		find_position(t_list **stack,int to_find);
+void	sort_four(t_list **stack_a,t_list **stack_b);
 
 
 #endif

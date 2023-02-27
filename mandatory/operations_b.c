@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:01:30 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/24 18:55:29 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/27 04:41:25 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ void ft_push_b(t_list **a,t_list **b)
 		*b = (*b)->next;
 		tmp->next = *a;
 		*a = tmp;
+	}
+	else
+	{
+		*b = *a;
+		*a = (*a)->next;
+		(*b)->next = NULL;
 	}
 	write(1,"pb\n",3);
 }
