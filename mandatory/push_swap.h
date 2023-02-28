@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/27 03:46:22 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:37:16 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_get_list(int argc,char **argv,t_list **stack_a);
 void	ft_print_list(t_list *stack);
 void	ft_print_index(t_list **stack);
 void	index_list(t_list **stack, t_list *new);
+int		is_sorted(t_list **stack);
 void	init_stack(t_list **stack);
 void	ft_swap_a(t_list **stack);
 void	ft_rotate_a(t_list **stack);
@@ -66,7 +67,7 @@ void	sort_three (t_list **stack);
 void	lst_min(t_list **stack);
 void	lst_max(t_list **stack);
 int		find_position(t_list **stack,int to_find);
-void	sort_four(t_list **stack_a,t_list **stack_b);
+void	sort_five(t_list **stack_a,t_list **stack_b);
 
 
 #endif
