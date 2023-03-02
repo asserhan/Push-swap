@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/28 20:37:16 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/02 01:22:57 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_list
 	int min_pos;
 	int max_pos;
 	int md_pos;
+	int size;
 	struct s_list *next;
 }			t_list;
 
@@ -63,11 +64,13 @@ void	ft_swap_b(t_list **stack);
 void	ft_rotate_b(t_list **stack);
 void	ft_reverse_rotate_b(t_list **stack);
 void	ft_push_b(t_list **b,t_list **a);
+void	sort_under(t_list **stack);
 void	sort_three (t_list **stack);
 void	lst_min(t_list **stack);
 void	lst_max(t_list **stack);
 int		find_position(t_list **stack,int to_find);
-void	sort_five(t_list **stack_a,t_list **stack_b);
+void	move_min_to_top(t_list **stack_a,int min_pos);
+void	sort_five(t_list **a,t_list **b);
 
 
 #endif

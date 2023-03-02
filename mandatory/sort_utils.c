@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:26:49 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/27 02:54:33 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/02 01:14:46 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,5 @@ void init_stack(t_list **stack)
 	(*stack)->top = (*stack)->index;
 	(*stack)->bott = ft_lstlast(*stack)->index;
 	(*stack)->md = ft_lstmiddle(*stack)->index;
-	lst_min(stack);
-	lst_max(stack);
-	(*stack)->min_pos = find_position(stack,(*stack)->min);
-	(*stack)->max_pos = find_position(stack,(*stack)->max);
-	(*stack)->md_pos =find_position(stack,(*stack)->md);
+	(*stack)->size = ft_lstsize(*stack);
 }

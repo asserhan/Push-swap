@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:18:06 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/28 20:46:59 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/02 01:31:16 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,49 +40,27 @@ void	sort_three(t_list **stack)
 		&& ((*stack)->md) > ((*stack)->bott))
 		ft_reverse_rotate_a(stack);
 }
-
-int find_position(t_list **stack,int to_find)
+void sort_under(t_list **stack)
 {
-	t_list *curr;
-	curr = (*stack);
-	int position;
-	position = 0;
-	while (curr)
-	{
-		if(curr->index == to_find)
-			return (position);
-		position++;
-		curr = curr->next;
-	}
-	return(-1);
+	if (ft_lstsize(*stack) == 2)
+		ft_swap_a(stack);
+	else if (ft_lstsize(*stack) == 3)
+		sort_three(stack);
 }
 int is_sorted(t_list **stack)
 {
-	while ((*stack)->next)
+	t_list *tmp;
+	tmp = *stack;
+	while (tmp->next)
 	{
-		if((*stack)->index > (*stack)->next->index)
+		if(tmp->index > tmp->next->index)
 			return(0);
-		(*stack) = (*stack)->next;
+		tmp = tmp->next;
 	}
 	return(1);
 }
-void init_pos(t_list **stack)
+
+void sort_five(t_list **a,t_list **b)
 {
-	t_list *curr;
-	curr = (*stack);
-	int i;
-	i = 0;
-	while (curr)
-	{
-		curr->pos = i;
-		i++;
-		curr = curr->next;
-	}
-}
-void sort_five(t_list **stack_a,t_list **stack_b)
-{
-	if (ft_lstsize(&stack_a) == 4)
-	{
-		
-	}
+	
 }

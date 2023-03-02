@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 20:03:04 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/28 20:18:30 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/02 01:24:39 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	ft_lstsize(t_list *lst)
 	count = 0;
 	while (lst != NULL)
 	{
-		lst = lst->next;
 		count++;
+		lst = lst->next;
 	}
 	return (count);
 }
