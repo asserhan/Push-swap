@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 20:02:10 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/24 15:39:15 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:03:27 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ void ft_reverse_rotate_a(t_list **stack)
 void ft_push_a(t_list **b,t_list **a)
 {
 	t_list *tmp;
-	if (*b)
-	{
-		tmp = *b;
-		*b = (*b)->next;
-		tmp->next = *a;
-		*a = tmp;
-	}
+	if (*b == NULL)
+		return ;
+	tmp = (*b)->next;
+	(*b)->next = *a;
+	*a = *b;
+	*b = tmp;
 	write(1,"pa\n",3);
 }
 

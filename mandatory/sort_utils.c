@@ -6,22 +6,12 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:26:49 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/02 01:14:46 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/04 13:09:08 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst -> next)
-	{
-		lst = lst -> next;
-	}
-	return (lst);
-}
 t_list *ft_lstmiddle(t_list *lst)
 {
 	if (!lst)
@@ -67,9 +57,7 @@ void lst_max(t_list **stack)
 }
 void init_stack(t_list **stack)
 {
-
-	(*stack)->top = (*stack)->index;
-	(*stack)->bott = ft_lstlast(*stack)->index;
-	(*stack)->md = ft_lstmiddle(*stack)->index;
 	(*stack)->size = ft_lstsize(*stack);
+	lst_min(stack);
+	lst_max(stack);
 }

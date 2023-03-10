@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:18:06 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/02 01:31:16 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:44:15 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,13 @@
 
 void	sort_three(t_list **stack)
 {
-	if (((*stack)->top) > ((*stack)->md) && ((*stack)->bott) > ((*stack)->md)
-		&& (((*stack)->bott) > ((*stack)->top)))
-		ft_swap_a(stack);
-	else if (((*stack)->top) > ((*stack)->md)
-		&& ((*stack)->md) > ((*stack)->bott)
-		&& ((*stack)->top) > ((*stack)->bott))
-	{
-		ft_swap_a(stack);
-		ft_reverse_rotate_a(stack);
-	}
-	else if (((*stack)->top) > ((*stack)->md)
-		&& ((*stack)->md) < ((*stack)->bott)
-		&& ((*stack)->top) > ((*stack)->bott))
+	init_stack(stack);
+	if((*stack)->index == (*stack)->max)
 		ft_rotate_a(stack);
-	else if (((*stack)->top) < ((*stack)->md)
-		&& ((*stack)->top) < ((*stack)->bott)
-		&& ((*stack)->md) > ((*stack)->bott))
-	{
-		ft_swap_a(stack);
-		ft_rotate_a(stack);
-	}
-	else if (((*stack)->top) < ((*stack)->md)
-		&& ((*stack)->top) > ((*stack)->bott)
-		&& ((*stack)->md) > ((*stack)->bott))
+	else if ((*stack)->next->index == (*stack)->max)
 		ft_reverse_rotate_a(stack);
+	if((*stack)->index > (*stack)->next->index)
+		ft_swap_a(stack);
 }
 void sort_under(t_list **stack)
 {
@@ -62,5 +44,28 @@ int is_sorted(t_list **stack)
 
 void sort_five(t_list **a,t_list **b)
 {
-	
+	int i;
+	int size;
+
+	i = 0;
+	if ((*a)->size == 4)
+	{
+		move_min_to_top(a);
+		ft_push_b(a,b);
+	}
+	if ((*a)->size == 5)
+	{
+		move_min_to_top(a);
+		ft_push_b(a,b);
+		move_min_to_top(a);
+		ft_push_b(a,b);
+	}
+	sort_three(a);
+	size = ft_lstsize(*b);
+	while (i < size)
+	{
+		ft_push_a(b,a);
+		i++;
+	}
 }
+
