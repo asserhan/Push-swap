@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 20:39:35 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/04 12:09:18 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:05:27 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,22 @@ void ft_print_list(t_list *stack)
 }
 void ft_print_index(t_list **stack)
 {
-	while (*stack)
+	t_list *tmp;
+	tmp = *stack;
+	while (tmp)
 	{
-		ft_printf("%d\n",(*stack)->index);
-		(*stack) = (*stack)->next;
+		ft_printf("%d\n",(tmp)->index);
+		(tmp) = (tmp)->next;
+	}
+}
+void ft_print_pos(t_list **stack)
+{
+	t_list *tmp;
+	tmp = *stack;
+	while (tmp)
+	{
+		ft_printf("%d\n",(tmp)->pos);
+		(tmp) = (tmp)->next;
 	}
 }
 t_list	*ft_lstlast(t_list *lst)
