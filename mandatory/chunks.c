@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:37:48 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/10 23:42:10 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/13 01:23:55 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,95 @@
 
 void push_chunk(t_list **a,t_list **b,int chunk, int d)
 {
-	// ft_print_index(a);
-	// t_list *tmp = *a;
+	static int tmp_chunk ;
+	tmp_chunk = (*a)->size / 5;
 	while ( (*a) && d < chunk)
 	{
-		// ft_printf("%d ***** %d\n", (*a)->index, chunk);
 		if (((*a)->index) < chunk)
 		{
-			ft_push_b(a,b);
+			if (((*a)->index) > ft_lstsize(*b) - (tmp_chunk / 2))
+			{
+				ft_push_b(a,b);
+				ft_rotate_b(b);
+			}
+			else
+				ft_push_b(a,b);
 			d++;
 		}
 		else
-		{
-			// ft_printf("chunk %d\n", (*a)->index);
-			// ft_printf("else\n");
 			ft_rotate_a(a);
-		}
-		//  (*a)=(*a)->next;
 	}
+}
 
+int nbr_inst(t_list **stack,int pos)
+{
+	int count;
+	ft_init_pos(stack);
+	if (pos < ft_lstsize(*stack) / 2)
+		count = pos;
+	else
+		count = ft_lstsize(*stack) - pos;
+	return (count);
+}
+
+void move_to_top(t_list **stack,int position,int index)
+{
+
+	int i;
+
+	i = 0;
+
+	if (position < ((*stack)->size) / 2)
+	{
+		while (position != 0)
+		{
+				ft_rotate_a(stack);
+				position = ft_get_pos(stack,index);
+		}
+	}
+	else
+	{
+		while (position!= 0)
+		{
+				ft_reverse_rotate_a(stack);
+				position = ft_get_pos(stack,index);
+		}
+	}
 }
 void chunk_sort(t_list **a,t_list **b)
 {
 	int chunk;
-	int i = 0;
-	int j = 1;
+	int i ;
+	int j;
+	int max_pos;
+	int b_max_pos;
+
+	i = 0;
+	j = 1;
 	chunk = (*a)->size / 5;
-	// ft_printf("%d", chunk);
-	// (void )b;
 	while (*a)
 	{
-		// ft_printf("%d///////////////\n", chunk * i);
 		push_chunk(a,b,chunk * j , chunk * i);
 		j++;
 		i++;
 	}
-
+	while (*b)
+	{
+		init_stack(b);
+		max_pos = ft_get_pos(b,(*b)->max);
+		ft_printf("****%d\n",max_pos);
+		b_max_pos = ft_get_pos(b,(*b)->b_max);
+		ft_printf("****%d\n",b_max_pos);
+		if(nbr_inst(b,max_pos) < nbr_inst(b,b_max_pos))
+		{
+			move_to_top(b,max_pos,(*b)->max);
+			ft_push_a(b,a);
+		}
+		else
+		{
+			move_to_top(b,b_max_pos,(*b)->b_max);
+			ft_push_a(b,a);
+			ft_swap_a(a);
+		}
+	}
 }
