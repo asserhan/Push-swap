@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:37:48 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/13 01:23:55 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:31:24 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,52 +47,40 @@ int nbr_inst(t_list **stack,int pos)
 
 void move_to_top(t_list **stack,int position,int index)
 {
-
-	int i;
-
-	i = 0;
-
-	if (position < ((*stack)->size) / 2)
+	if (position < ft_lstsize(*stack) / 2)
 	{
 		while (position != 0)
 		{
-				ft_rotate_a(stack);
+				ft_rotate_b(stack);
 				position = ft_get_pos(stack,index);
 		}
 	}
 	else
 	{
-		while (position!= 0)
+		while (position != 0)
 		{
-				ft_reverse_rotate_a(stack);
+				ft_reverse_rotate_b(stack);
 				position = ft_get_pos(stack,index);
 		}
 	}
 }
-void chunk_sort(t_list **a,t_list **b)
+void push_back(t_list **a,t_list **b)
 {
-	int chunk;
-	int i ;
-	int j;
 	int max_pos;
 	int b_max_pos;
-
+	int i;
+	int size;
+	size = ft_lstsize(*b) - 1;
 	i = 0;
-	j = 1;
-	chunk = (*a)->size / 5;
-	while (*a)
-	{
-		push_chunk(a,b,chunk * j , chunk * i);
-		j++;
-		i++;
-	}
 	while (*b)
 	{
-		init_stack(b);
-		max_pos = ft_get_pos(b,(*b)->max);
-		ft_printf("****%d\n",max_pos);
-		b_max_pos = ft_get_pos(b,(*b)->b_max);
-		ft_printf("****%d\n",b_max_pos);
+		if(*b && !((*b)->next))
+		{
+			ft_push_a(b,a);
+		}
+		max_pos = ft_get_pos(b,size);
+		b_max_pos = ft_get_pos(b,size - 1);
+
 		if(nbr_inst(b,max_pos) < nbr_inst(b,b_max_pos))
 		{
 			move_to_top(b,max_pos,(*b)->max);
@@ -100,9 +88,36 @@ void chunk_sort(t_list **a,t_list **b)
 		}
 		else
 		{
-			move_to_top(b,b_max_pos,(*b)->b_max);
+			move_to_top(b, b_max_pos,(*b)->b_max);
+			ft_push_a(b,a);
+			move_to_top(b, max_pos,(*b)->max);
 			ft_push_a(b,a);
 			ft_swap_a(a);
+			size--;
 		}
+		size--;
 	}
+}
+
+
+
+void chunk_sort(t_list **a,t_list **b,int d)
+{
+	int chunk;
+	int i ;
+	int j;
+
+
+	i = 0;
+	j = 1;
+	chunk = (*a)->size / d;
+	while (*a)
+	{
+		push_chunk(a,b,chunk * j , chunk * i);
+		j++;
+		i++;
+	}
+	// ft_printf("********\n");
+	// ft_print_list(*b);
+	push_back(a,b);
 }

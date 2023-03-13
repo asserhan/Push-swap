@@ -6,16 +6,16 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 09:00:00 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/12 21:32:19 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:59:18 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_init_pos(t_list **stack)
+void	ft_init_pos(t_list **stack)
 {
-	t_list *tmp;
-	int i;
+	t_list	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = *stack;
@@ -26,31 +26,29 @@ void ft_init_pos(t_list **stack)
 		tmp = tmp->next;
 	}
 }
-int ft_get_min_pos(t_list **stack)
+int	ft_get_min_pos(t_list **stack)
 {
-	t_list *tmp;
-	int min_pos;
+	t_list	*tmp;
+	int		min_pos;
 
 	tmp = *stack;
 	init_stack(stack);
 	ft_init_pos(stack);
 	min_pos = tmp->pos;
-	while(tmp)
+	while (tmp)
 	{
-		if((*stack)->min == tmp->index)
+		if ((*stack)->min == tmp->index)
 			min_pos = tmp->pos;
 		tmp = tmp->next;
 	}
-	return(min_pos);
+	return (min_pos);
 }
 
-int ft_get_pos(t_list **stack,int index)
+int	ft_get_pos(t_list **stack, int index)
 {
 	t_list *tmp;
 	int position;
-
 	tmp = *stack;
-	init_stack(stack);
 	ft_init_pos(stack);
 	position = tmp->pos;
 	while(tmp)
@@ -60,12 +58,23 @@ int ft_get_pos(t_list **stack,int index)
 		tmp = tmp->next;
 	}
 	return(position);
+	// int i;
+
+	// i = 0;
+	// tmp = *stack;
+	// while (tmp && (index != tmp->index))
+	// {
+	// 	ft_printf ("fikom sda3\n");
+	// 	i++;
+	// 	tmp = tmp->next;
+	// }
+	// return (i);
 }
 
-void move_min_to_top(t_list **stack)
+void	move_min_to_top(t_list **stack)
 {
-	int min_pos;
-	int i;
+	int	min_pos;
+	int	i;
 
 	i = 0;
 	min_pos = ft_get_min_pos(stack);
@@ -73,16 +82,16 @@ void move_min_to_top(t_list **stack)
 	{
 		while (min_pos != 0)
 		{
-				ft_rotate_a(stack);
-				min_pos = ft_get_min_pos(stack);
+			ft_rotate_a(stack);
+			min_pos = ft_get_min_pos(stack);
 		}
 	}
 	else
 	{
 		while (min_pos != 0)
 		{
-				ft_reverse_rotate_a(stack);
-				min_pos = ft_get_min_pos(stack);
+			ft_reverse_rotate_a(stack);
+			min_pos = ft_get_min_pos(stack);
 		}
 	}
 }

@@ -7,7 +7,7 @@ SRC = mandatory/parsing_utils.c  mandatory/ft_split.c mandatory/parsing.c mandat
 FT_PRINTF_LIB = libftprintf.a
 FT_PRINTF = $(addprefix ft_printf/,$(FT_PRINTF_LIB))
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 CC = cc
 RM = rm -f
 

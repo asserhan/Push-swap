@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/13 00:29:37 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:22:21 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		ft_get_min_pos(t_list **stack);
 int ft_get_pos(t_list **stack,int index);
 void	move_min_to_top(t_list **stack);
 void	sort_five(t_list **a,t_list **b);
-void	chunk_sort(t_list **a,t_list **b);
+void chunk_sort(t_list **a,t_list **b,int d);
 
 
 #endif
