@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 15:43:33 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/19 17:54:18 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:53:23 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ size_t	ft_strlen(const char *s)
 char	*ft_strdup(const char *s1)
 {
 	char	*p;
-	size_t	size ;
+	size_t	size;
 	size_t	i;
 
 	i = 0;
 	while (s1[i])
 		i++;
 	size = i + 1;
-	p = (char *)malloc (size * sizeof(char));
+	p = (char *)malloc(size * sizeof(char));
 	if (!p || !s1)
 		return (NULL);
 	i = 0;
@@ -91,7 +91,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*p;
-	size_t	len ;
+	size_t	len;
 
 	if (!s1 || !s2)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 20:03:04 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/02 01:24:39 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:00:08 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(int content)
 {
 	t_list	*new_node;
 
-	new_node = malloc (sizeof(t_list));
+	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
@@ -35,14 +35,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 	{
 		last = *lst;
-		while (last -> next != NULL)
-			last = last -> next;
-		last -> next = new;
+		while (last->next != NULL)
+			last = last->next;
+		last->next = new;
 	}
 }
-void ft_lstclear(t_list **lst)
+
+void	ft_lstclear(t_list **lst)
 {
-	t_list *curr;
+	t_list	*curr;
 
 	if (!lst || !*lst)
 		return ;
@@ -54,6 +55,7 @@ void ft_lstclear(t_list **lst)
 	}
 	*lst = NULL;
 }
+
 int	ft_lstsize(t_list *lst)
 {
 	int	count;
@@ -65,4 +67,16 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 	}
 	return (count);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:46:53 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/14 18:43:09 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:00:27 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 void	tt(void)
 {
 	system("leaks push_swap");
+}
+
+void	ft_error_msg(char *str)
+{
+	while (*str)
+	{
+		write(2, &*str, 1);
+		str++;
+	}
+	write(2, "\n", 1);
+	exit(1);
 }
 
 int	main(int argc, char **argv)
@@ -35,16 +46,11 @@ int	main(int argc, char **argv)
 			sort_under(&stack_a);
 		else if ((stack_a)->size == 4 || (stack_a)->size == 5)
 			sort_five(&stack_a, &stack_b);
-		// ft_print_index(&stack_a);
 		else if ((stack_a)->size < 200)
 			chunk_sort(&stack_a, &stack_b, 5);
 		else if ((stack_a)->size >= 200)
 			chunk_sort(&stack_a, &stack_b, 9);
-		//  ft_printf("*******\n");
-		// ft_print_list(stack_b);
-		// ft_printf("*******\n");
-		// ft_print_list(stack_a);
-		// ft_lstclear(&stack_a);
+		ft_lstclear(&stack_a);
 	}
 	else
 		exit(0);

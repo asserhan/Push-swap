@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 23:39:05 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/17 17:32:15 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:50:58 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static size_t	nbr_words(char const *s, char c)
 static void	next_word(const char *s, size_t *begin, size_t *end, char c)
 {
 	while (s[*begin] == c)
-			(*begin)++;
-		*end = *begin;
+		(*begin)++;
+	*end = *begin;
 	while (s[*end] && s[*end] != c)
-			(*end)++;
+		(*end)++;
 }
 
 char	**free_strings(char **str)
@@ -49,11 +49,12 @@ char	**free_strings(char **str)
 	i = 0;
 	while (str[i])
 	{
-		free (str[i++]);
+		free(str[i++]);
 	}
-	free (str);
+	free(str);
 	return (NULL);
 }
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*p;
@@ -72,13 +73,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	if (len >= len_s)
 		len = len_s;
-	p = (char *)malloc((len + 1) * sizeof (char));
+	p = (char *)malloc((len + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
 	else
 		ft_strlcpy(p, s + start, len + 1);
 	return (p);
 }
+
 char	**ft_split(char const *s, char c)
 {
 	char	**strings;
@@ -88,7 +90,7 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	strings = (char **) malloc((nbr_words(s, c) + 1) * sizeof(char *));
+	strings = (char **)malloc((nbr_words(s, c) + 1) * sizeof(char *));
 	if (!strings)
 		return (NULL);
 	begin = 0;

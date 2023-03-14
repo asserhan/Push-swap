@@ -6,43 +6,23 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:00:14 by hasserao          #+#    #+#             */
-/*   Updated: 2023/02/23 18:56:35 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:57:42 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error_msg(char *str)
+int	ft_is_empty(char *argv)
 {
-	while (*str)
-	{
-		write (2,&*str,1);
-		str++;
-	}
-	write (2,"\n",1);
-	exit(1);
-}
+	size_t	len;
+	size_t	count;
+	size_t	i;
 
-int	ft_strcmp(char *s1,char *s2)
-{
-	if (!s1 || !s2)
-		return (0);
-	int i=0;
-	while (s1[i] && s2[i]  && s1[i] == s2[i])
-			i++;
-	return (s1[i] - s2[i]);
-}
-int ft_is_empty(char *argv)
-{
-	size_t len;
-	size_t count;
-	size_t i;
-
-	len =ft_strlen(argv);
+	len = ft_strlen(argv);
 	if (len == 0)
 		return (1);
 	count = 0;
-	i=0;
+	i = 0;
 	while (argv[i])
 	{
 		if (argv[i] == ' ')
@@ -51,43 +31,13 @@ int ft_is_empty(char *argv)
 	}
 	if (len == count)
 		return (1);
-	return(0);
-}
-long	ft_atoi(char *str)
-{
-	int i;
-	int sign;
-	long res;
-
-	i =0;
-	sign =1;
-	res =0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '-')
-		sign=-1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (str[i] == '-' || str[i] == '+' || !str[i])
-		ft_error_msg("Error");
-	while (str[i] && (str[i] >= '0'&& str[i] <= '9'))
-	{
-
-		res *=10;
-		res += str[i] - '0';
-		i++;
-	}
-	if (str[i])
-			ft_error_msg("Error");
-	return(res*sign);
+	return (0);
 }
 
-
-
-int ft_duplicate(char **list)
+int	ft_duplicate(char **list)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (list[i])
@@ -103,65 +53,55 @@ int ft_duplicate(char **list)
 	}
 	return (0);
 }
+
 void	ft_limits(char **list)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (list[i])
 	{
-		if((ft_atoi(list[i]) > 2147483647) || (ft_atoi(list[i]) < -2147483648))
+		if ((ft_atoi(list[i]) > 2147483647) || (ft_atoi(list[i]) < -2147483648))
 			ft_error_msg("Error");
 		i++;
 	}
 }
-char *ft_get_args(int argc,char **argv)
+
+char	*ft_get_args(int argc, char **argv)
 {
+	int		i;
+	char	*res;
+	char	*tmp;
+	char	*res_temp;
 
-		int i ;
-		char *res;
-		char *tmp;
-		char *res_temp;
-
-		i = 0;
-		tmp = ft_strdup("");
-		while (++i < argc)
-		{
-			if (ft_is_empty(argv[i]))
-				ft_error_msg("Error");
-			res_temp =ft_strjoin(tmp,argv[i]);
-			res = ft_strjoin(res_temp," ");
-			tmp = res;
-		}
-		return(res);
-}
-
-char **ft_parsing(int argc,char **argv)
-{
-
-		char **list;
-		char *res;
-		res =ft_get_args(argc,argv);
-		list = ft_split(res,' ');
-		free (res);
-		if (!list)
-		{
-			free_strings(list);
-			ft_error_msg("split Error");
-		}
-		if (ft_duplicate(list))
+	i = 0;
+	tmp = ft_strdup("");
+	while (++i < argc)
+	{
+		if (ft_is_empty(argv[i]))
 			ft_error_msg("Error");
-		ft_limits(list);
-		return (list);
+		res_temp = ft_strjoin(tmp, argv[i]);
+		res = ft_strjoin(res_temp, " ");
+		tmp = res;
+	}
+	return (res);
 }
 
+char	**ft_parsing(int argc, char **argv)
+{
+	char	**list;
+	char	*res;
 
-
-
-
-
-// whiel (Ss)
-// 	atoi(ss[i]);
-
-
-// whiel (Ss)
-// 	ls_addback(lst, lstnew(atoi(ss[i])));
+	res = ft_get_args(argc, argv);
+	list = ft_split(res, ' ');
+	free(res);
+	if (!list)
+	{
+		free_strings(list);
+		ft_error_msg("split Error");
+	}
+	if (ft_duplicate(list))
+		ft_error_msg("Error");
+	ft_limits(list);
+	return (list);
+}

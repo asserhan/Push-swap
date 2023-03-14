@@ -6,28 +6,28 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:01:30 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/04 12:03:54 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:52:50 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_swap_b(t_list **stack)
+void	ft_swap_b(t_list **stack)
 {
-	int tmp;
+	int	tmp;
 
 	if (!*stack || !(*stack)->next)
 		return ;
 	tmp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = tmp;
-	write (1,"sb\n",3);
+	write(1, "sb\n", 3);
 }
 
-void ft_rotate_b(t_list **stack)
+void	ft_rotate_b(t_list **stack)
 {
-	t_list *curr;
-	t_list *head;
+	t_list	*curr;
+	t_list	*head;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -38,12 +38,13 @@ void ft_rotate_b(t_list **stack)
 		curr = curr->next;
 	curr->next = head;
 	head->next = NULL;
-	write (1,"rb\n",3);
+	write(1, "rb\n", 3);
 }
-void ft_reverse_rotate_b(t_list **stack)
+
+void	ft_reverse_rotate_b(t_list **stack)
 {
-	t_list *curr;
-	t_list *last;
+	t_list	*curr;
+	t_list	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -54,19 +55,18 @@ void ft_reverse_rotate_b(t_list **stack)
 	last->next = *stack;
 	*stack = last;
 	curr->next = NULL;
-	write (1,"rrb\n",4);
-
-
+	write(1, "rrb\n", 4);
 }
 
-void ft_push_b(t_list **a,t_list **b)
+void	ft_push_b(t_list **a, t_list **b)
 {
-	t_list *tmp;
+	t_list	*tmp;
+
 	if (*a == NULL)
 		return ;
 	tmp = (*a)->next;
 	(*a)->next = *b;
 	*b = *a;
 	*a = tmp;
-	write(1,"pb\n",3);
+	write(1, "pb\n", 3);
 }

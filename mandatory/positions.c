@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 09:00:00 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/14 02:26:33 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:58:31 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_init_pos(t_list **stack)
 		tmp = tmp->next;
 	}
 }
+
 int	ft_get_min_pos(t_list **stack)
 {
 	t_list	*tmp;
@@ -46,29 +47,19 @@ int	ft_get_min_pos(t_list **stack)
 
 int	ft_get_pos(t_list **stack, int index)
 {
-	t_list *tmp;
-	int position;
+	t_list	*tmp;
+	int		position;
+
 	tmp = *stack;
 	ft_init_pos(stack);
 	position = tmp->pos;
-	while(tmp)
+	while (tmp)
 	{
-		if(index == tmp->index)
+		if (index == tmp->index)
 			position = tmp->pos;
 		tmp = tmp->next;
 	}
-	return(position);
-	// int i;
-
-	// i = 0;
-	// tmp = *stack;
-	// while (tmp && (index != tmp->index))
-	// {
-	// 	ft_printf ("fikom sda3\n");
-	// 	i++;
-	// 	tmp = tmp->next;
-	// }
-	// return (i);
+	return (position);
 }
 
 void	move_min_to_top(t_list **stack)
