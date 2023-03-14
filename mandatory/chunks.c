@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:37:48 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/13 23:31:24 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 03:04:18 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,36 +67,54 @@ void move_to_top(t_list **stack,int position,int index)
 void push_back(t_list **a,t_list **b)
 {
 	int max_pos;
-	int b_max_pos;
+	//int b_max_pos;
 	int i;
 	int size;
 	size = ft_lstsize(*b) - 1;
 	i = 0;
+
 	while (*b)
 	{
-		if(*b && !((*b)->next))
+		init_stack(b);
+		max_pos = ft_get_pos(b,(*b)->max);
+		if ((*b)->index == (*b)->max)
 		{
 			ft_push_a(b,a);
-		}
-		max_pos = ft_get_pos(b,size);
-		b_max_pos = ft_get_pos(b,size - 1);
-
-		if(nbr_inst(b,max_pos) < nbr_inst(b,b_max_pos))
-		{
-			move_to_top(b,max_pos,(*b)->max);
-			ft_push_a(b,a);
-		}
-		else
-		{
-			move_to_top(b, b_max_pos,(*b)->b_max);
-			ft_push_a(b,a);
-			move_to_top(b, max_pos,(*b)->max);
-			ft_push_a(b,a);
-			ft_swap_a(a);
 			size--;
 		}
-		size--;
+		else if (max_pos > size / 2)
+			ft_reverse_rotate_b(b);
+		else
+			ft_rotate_b(b);
+
 	}
+	// while (*b)
+	// {
+	// 	init_stack(b);
+	// 	if(*b && !((*b)->next))
+	// 	{
+	// 		ft_push_a(b,a);
+	// 		break;
+	// 	}
+	// 	max_pos = ft_get_pos(b,(*b)->max);
+	// 	b_max_pos = ft_get_pos(b,(*b)->b_max);
+
+	// 	if(nbr_inst(b,max_pos) < nbr_inst(b,b_max_pos))
+	// 	{
+	// 		move_to_top(b,max_pos,(*b)->max);
+	// 		ft_push_a(b,a);
+	// 	}
+	// 	else
+	// 	{
+	// 		move_to_top(b, b_max_pos,(*b)->b_max);
+	// 		ft_push_a(b,a);
+	// 		move_to_top(b, max_pos,(*b)->max);
+	// 		ft_push_a(b,a);
+	// 		ft_swap_a(a);
+	// 		size--;
+	// 	}
+	// 	size--;
+	// }
 }
 
 
