@@ -6,17 +6,20 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:37:48 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/14 03:04:18 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:36:27 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_chunk(t_list **a,t_list **b,int chunk, int d)
+void push_chunk(t_list **a,t_list **b,int chunk, int begin)
 {
 	static int tmp_chunk ;
-	tmp_chunk = (*a)->size / 5;
-	while ( (*a) && d < chunk)
+	if ((*a)->size < 200)
+		tmp_chunk = (*a)->size / 5;
+	else
+		tmp_chunk = (*a)->size / 9;
+	while ( (*a) && begin < chunk)
 	{
 		if (((*a)->index) < chunk)
 		{
@@ -27,7 +30,7 @@ void push_chunk(t_list **a,t_list **b,int chunk, int d)
 			}
 			else
 				ft_push_b(a,b);
-			d++;
+			begin++;
 		}
 		else
 			ft_rotate_a(a);
@@ -64,6 +67,17 @@ void move_to_top(t_list **stack,int position,int index)
 		}
 	}
 }
+void push_top(t_list **b,int pos,int index,int size)
+{
+	while (pos != 0)
+	{
+		pos = ft_get_pos(b,index);
+		if (pos > size /2)
+			ft_reverse_rotate_b(b);
+		else
+			ft_rotate_b(b);
+	}
+}
 void push_back(t_list **a,t_list **b)
 {
 	int max_pos;
@@ -75,17 +89,49 @@ void push_back(t_list **a,t_list **b)
 
 	while (*b)
 	{
-		init_stack(b);
-		max_pos = ft_get_pos(b,(*b)->max);
-		if ((*b)->index == (*b)->max)
+		if(*b && !((*b)->next))
 		{
 			ft_push_a(b,a);
-			size--;
+			break;
 		}
-		else if (max_pos > size / 2)
-			ft_reverse_rotate_b(b);
-		else
-			ft_rotate_b(b);
+		init_stack(b);
+		max_pos = ft_get_pos(b,(*b)->max);
+		// b_max_pos = ft_get_pos(b,(*b)->b_max);
+		// if(nbr_inst(b,max_pos) < nbr_inst(b,b_max_pos))
+	 	// {
+			if ((*b)->index == (*b)->max)
+			{
+				ft_push_a(b,a);
+				size--;
+			}
+			else if (max_pos > size / 2)
+				ft_reverse_rotate_b(b);
+			else
+				ft_rotate_b(b);
+		// }
+		// else
+		// {
+		// 	if ((*b)->index == (*b)->b_max)
+		// 	{
+		// 		ft_push_a(b,a);
+		// 		size--;
+		// 	}
+		// 	else if (b_max_pos > size / 2)
+		// 		ft_reverse_rotate_b(b);
+		// 	else
+		// 		ft_rotate_b(b);
+		// 	if ((*b)->index == (*b)->max)
+		// 	{
+		// 		ft_push_a(b,a);
+		// 		size--;
+		// 	}
+		// 	else if (max_pos > size / 2)
+		// 		ft_reverse_rotate_b(b);
+		// 	else
+		// 		ft_rotate_b(b);
+		// 	ft_swap_a(a);
+
+		// }
 
 	}
 	// while (*b)
@@ -106,7 +152,7 @@ void push_back(t_list **a,t_list **b)
 	// 	}
 	// 	else
 	// 	{
-	// 		move_to_top(b, b_max_pos,(*b)->b_max);
+			//move_to_top(b, b_max_pos,(*b)->b_max);
 	// 		ft_push_a(b,a);
 	// 		move_to_top(b, max_pos,(*b)->max);
 	// 		ft_push_a(b,a);
@@ -135,7 +181,5 @@ void chunk_sort(t_list **a,t_list **b,int d)
 		j++;
 		i++;
 	}
-	// ft_printf("********\n");
-	// ft_print_list(*b);
 	push_back(a,b);
 }

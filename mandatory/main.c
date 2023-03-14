@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 23:46:53 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/14 02:12:23 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:43:09 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	main(int argc, char **argv)
 			chunk_sort(&stack_a, &stack_b, 5);
 		else if ((stack_a)->size >= 200)
 			chunk_sort(&stack_a, &stack_b, 9);
-		 ft_printf("*******\n");
-		ft_print_list(stack_b);
-		ft_printf("*******\n");
-		ft_print_list(stack_a);
+		//  ft_printf("*******\n");
+		// ft_print_list(stack_b);
+		// ft_printf("*******\n");
+		// ft_print_list(stack_a);
 		// ft_lstclear(&stack_a);
 	}
 	else
