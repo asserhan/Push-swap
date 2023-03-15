@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:17:02 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/14 20:58:39 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:25:16 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ int					ft_lstsize(t_list *lst);
 void				ft_lstclear(t_list **lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_get_list(int argc, char **argv, t_list **stack_a);
-void				ft_print_list(t_list *stack);
-void				ft_print_index(t_list **stack);
 void				index_list(t_list **stack, t_list *new);
 int					is_sorted(t_list **stack);
 void				init_stack(t_list **stack);
@@ -71,9 +69,8 @@ void				sort_three(t_list **stack);
 void				lst_min(t_list **stack);
 void				lst_max(t_list **stack);
 void				ft_init_pos(t_list **stack);
-void				ft_print_pos(t_list **stack);
 int					ft_get_min_pos(t_list **stack);
-int					ft_get_pos(t_list **stack, int index);
+int					ft_get_pos(t_list *stack, int index);
 void				move_min_to_top(t_list **stack);
 void				sort_five(t_list **a, t_list **b);
 void				chunk_sort(t_list **a, t_list **b, int d);

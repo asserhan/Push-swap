@@ -6,7 +6,7 @@
 /*   By: hasserao <hasserao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 09:00:00 by hasserao          #+#    #+#             */
-/*   Updated: 2023/03/14 20:58:31 by hasserao         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:24:29 by hasserao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,25 @@ int	ft_get_min_pos(t_list **stack)
 	return (min_pos);
 }
 
-int	ft_get_pos(t_list **stack, int index)
+int	ft_get_pos(t_list *stack, int index)
 {
-	t_list	*tmp;
 	int		position;
 
-	tmp = *stack;
-	ft_init_pos(stack);
-	position = tmp->pos;
-	while (tmp)
+	position = 0;
+	while (stack)
 	{
-		if (index == tmp->index)
-			position = tmp->pos;
-		tmp = tmp->next;
+		if(stack->index == index)
+			return(position);
+		position++;
+		stack=stack->next;
 	}
-	return (position);
+	return (-1);
 }
 
 void	move_min_to_top(t_list **stack)
 {
 	int	min_pos;
-	int	i;
 
-	i = 0;
 	min_pos = ft_get_min_pos(stack);
 	if (min_pos < ((*stack)->size) / 2)
 	{
